@@ -6,12 +6,18 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
+
       - name: Install pylint
         run: pip install pylint
-      - name: Run pylint
-        run: python -m pylint my_code.py
+
+      - name: Run pylint on Python files
+        run: |
+          ls -R                # show files in repo
+          pylint my_code.py    # explicitly lint your Python file
