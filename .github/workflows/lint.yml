@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -17,4 +14,4 @@ jobs:
       - name: Install pylint
         run: pip install pylint
       - name: Run pylint
-        run: python -m pylint ./my_code.py
+        run: pylint my_code.py
